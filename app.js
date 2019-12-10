@@ -16,9 +16,12 @@ mongoose.connection.on('error',(err)=>{
     console.log('could not connect to mongodb');
 })
 var port=3000;
-app.use('/',routes);
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
+
+app.use('/',routes);
+
+//app.use(bodyParser)
 
 app.listen(port,()=>{
     console.log("connected to port" +port)

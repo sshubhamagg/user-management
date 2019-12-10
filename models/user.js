@@ -9,20 +9,20 @@ const userSchema = mongoose.Schema({
     },
     address :{
         type:String,
-        required: true
+       required: true
     },
     email:{
         type: String,
         required:true,
-        validator:[
-            {
-                validator:value=> validator.isEmail(value),
-                message: '{value} is not a valid email id'
-            }
+         validator:[
+             {
+                 validator:value=> validator.isEmail(value),
+                 message: '{value} is not a valid email id'
+             }
         ]
     },
     phone :{
-        type:Number,
+        type:String,
         required: true,
         validate:[{
             validator: value=> (validator.isNumeric(value)&& validator.isLength(value,{min : 10, max:10})),
@@ -37,14 +37,18 @@ const userSchema = mongoose.Schema({
 
     gender:{
         type: String,
-        required:true
+       required:true
     },
 
     isActive:{
         type:Boolean,
         default:false
-    }
+    },
 
+    password:{
+        type:String,
+        required:true
+    }
 })
 
 

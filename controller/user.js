@@ -4,7 +4,9 @@ var httpStatus = require("http-status-codes")
 
 exports.addUser = async (req, res) => {
     try {
-        var data = req.body;
+        var data =req.body;
+       // console.log(data);
+        
         if(_.isEmpty(data)){
         res.status(400).json({ success: false, data: "user data not found" })
     }
@@ -13,14 +15,17 @@ exports.addUser = async (req, res) => {
 
         if (user.success)
             res.status(200).json({ success: true, data: "user added successfully" })
-        else
+        else{
+            console.log(res);
+            
             res.status(400).json({ success: false, data: "user could not be added" })
-
+        
+        }
     }
 }
-catch (error) {
+catch (err) {
 
-    console.log(error);
-    res.status(404).json({ error: error });
+    console.log(err);
+    res.status(404).json({ error: err });
 }
 }
